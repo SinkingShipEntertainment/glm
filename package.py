@@ -14,7 +14,6 @@ with scope("config") as c:
     c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
     #c.build_thread_count = "physical_cores"
 
-
 requires = [
 ]
 
@@ -22,14 +21,14 @@ private_build_requires = [
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7"],
 ]
 
 uuid = "repository.glm"
+build_command = "rez python {root}/rez_build.py"
+
 
 def pre_build_commands():
     command("source /opt/rh/devtoolset-6/enable")
-
 
 def commands():
     # NOTE: REZ package versions can have ".sse." to separate the external
